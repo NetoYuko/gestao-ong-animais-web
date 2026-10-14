@@ -1,9 +1,7 @@
-function App() {
-  return (
-    <div>
-      <h1>Sistema Pedacinho do Céu - Frontend</h1>
-    </div>
-  )
+import { AppRoutes } from './routes/AppRoutes'
+
+export function App() {
+  return <AppRoutes />;
 }
 
-export default App
+export default App;
