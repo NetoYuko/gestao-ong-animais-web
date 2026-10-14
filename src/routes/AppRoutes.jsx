@@ -2,12 +2,12 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ProtectedRoute } from './ProtectedRoute';
 
 import { Login } from '../pages/Login.jsx';
-// import { Dashboard } from '../pages/Dashboard.jsx';
+import { Dashboard } from '../pages/Dashboard.jsx';
 import { Animais } from '../pages/Animais.jsx';
-// import { Tutores } from '../pages/Tutores';
-// import { Adocoes } from '../pages/Adocoes';
-// import { Prontuarios } from '../pages/Prontuarios';
-// import { Usuarios } from '../pages/Usuarios';
+import { Tutores } from '../pages/Tutores';
+import { Adocoes } from '../pages/Adocoes';
+import { Prontuarios } from '../pages/Prontuarios';
+import { Usuarios } from '../pages/Usuarios';
 
 export function AppRoutes() {
   return (
@@ -17,7 +17,7 @@ export function AppRoutes() {
         <Route path="/login" element={<Login />} />
 
         {/* ================= ROTAS PRIVADAS (Exigem Token JWT) ================= */}
-        {/* Comportamento visual: ambos ADMIN e VISUALIZADOR acessam para consulta */}
+        {/* Comportamento visual: ambos ADMIN e USER acessam para consulta */}
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/animais" element={<Animais />} />
