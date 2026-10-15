@@ -4,10 +4,10 @@ import { ProtectedRoute } from './ProtectedRoute';
 import { Login } from '../pages/Login.jsx';
 import { Dashboard } from '../pages/Dashboard.jsx';
 import { Animais } from '../pages/Animais.jsx';
-import { Tutores } from '../pages/Tutores';
-import { Adocoes } from '../pages/Adocoes';
-import { Prontuarios } from '../pages/Prontuarios';
-import { Usuarios } from '../pages/Usuarios';
+import { Tutores } from '../pages/Tutores.jsx';
+import { Adocoes } from '../pages/Adocoes.jsx';
+import { Prontuarios } from '../pages/Prontuarios.jsx';
+import { Usuarios } from '../pages/Usuarios.jsx';
 
 export function AppRoutes() {
   return (
