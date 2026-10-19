@@ -32,6 +32,7 @@ describe('API Interceptors', () => {
     try {
       await api.get('/animais');
     } catch (error) {
+        const expectedError = error;
     }
 
     expect(localStorage.getItem(STORAGE_KEYS.TOKEN)).toBeNull();
