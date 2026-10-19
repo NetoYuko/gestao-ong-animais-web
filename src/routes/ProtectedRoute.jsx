@@ -1,12 +1,13 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { STORAGE_KEYS } from '../utils/storageKeys';
+import { useAuth } from '../contexts/AuthContext';
 
 export function ProtectedRoute({ allowedRoles }) {
+const { token, user, loading } = useAuth();
   const location = useLocation();
-  
-  const token = localStorage.getItem(STORAGE_KEYS.TOKEN);
-  const userString = localStorage.getItem(STORAGE_KEYS.USER);
-  const user = userString ? JSON.parse(userString) : null;
+
+  if (loading) {
+    return <div>Carregando...</div>; 
+  }
 
   if (!token) {
     return <Navigate to="/login" state={{ from: location }} replace />;
