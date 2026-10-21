@@ -81,7 +81,7 @@ export function Layout() {
               <Menu className="w-6 h-6" />
             </button>
             <div>
-              <h1 className="text-xl md:text-2xl font-bold text-slate-800 truncate max-w-[200px] md:max-w-none">
+              <h1 className="text-xl md:text-2xl font-bold text-slate-800 truncate max-w-50 md:max-w-none">
                 Olá, {user?.email?.split('@')[0] || 'Usuário'}!
               </h1>
             </div>
