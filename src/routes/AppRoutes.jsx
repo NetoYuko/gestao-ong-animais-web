@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ProtectedRoute } from './ProtectedRoute';
+import { Layout } from '../components/Layout.jsx';
 
 import { Login } from '../pages/Login.jsx';
 import { Dashboard } from '../pages/Dashboard.jsx';
@@ -19,17 +20,21 @@ export function AppRoutes() {
         {/* ================= ROTAS PRIVADAS (Exigem Token JWT) ================= */}
         {/* Comportamento visual: ambos ADMIN e USER acessam para consulta */}
         <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/animais" element={<Animais />} />
-          <Route path="/tutores" element={<Tutores />} />
-          <Route path="/adocoes" element={<Adocoes />} />
-          <Route path="/prontuarios" element={<Prontuarios />} />
+          <Route element={<Layout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/animais" element={<Animais />} />
+            <Route path="/tutores" element={<Tutores />} />
+            <Route path="/adocoes" element={<Adocoes />} />
+            <Route path="/prontuarios" element={<Prontuarios />} />
+          </Route>
         </Route>
 
         {/* ================= ROTAS RESTRITAS AO ADMIN ================= */}
         {/* Gestão de voluntários/usuários do sistema */}
         <Route element={<ProtectedRoute allowedRoles={['ADMIN']} />}>
-          <Route path="/usuarios" element={<Usuarios />} />
+          <Route element={<Layout />}>
+            <Route path="/usuarios" element={<Usuarios />} />
+          </Route>
         </Route>
 
         {/* ================= REDIRECIONAMENTOS PADRÃO (Fallback) ================= */}
