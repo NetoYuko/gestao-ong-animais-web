@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { api } from '../services/api';
-import { supabase } from '../services/supabase';
+import { api } from '../../services/api';
+import { supabase } from '../../services/supabase';
 import { UploadCloud, X, Loader2 } from 'lucide-react';
-import { BaseModal } from './ui/BaseModal';
+import { BaseModal } from '../ui/BaseModal';
 
 const animalSchema = z.object({
   nome: z.string().min(1, 'O nome é obrigatório'),
