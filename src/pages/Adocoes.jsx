@@ -5,7 +5,7 @@ import { Edit } from 'lucide-react';
 
 import { PageHeader } from '../components/ui/PageHeader';
 import { DataTable } from '../components/ui/DataTable';
-import { AdocaoFormModal } from '../components/AdocaoFormModal';
+import { AdocaoFormModal } from '../components/adocao/AdocaoFormModal';
 
 export function Adocoes() {
   const { user } = useAuth();

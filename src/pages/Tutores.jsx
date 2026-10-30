@@ -5,7 +5,7 @@ import { Edit, Trash } from 'lucide-react';
 
 import { PageHeader } from '../components/ui/PageHeader';
 import { DataTable } from '../components/ui/DataTable';
-import { TutorFormModal } from '../components/TutorFormModal';
+import { TutorFormModal } from '../components/tutores/TutorFormModal';
 
 export function Tutores() {
   const { user } = useAuth();

@@ -5,7 +5,7 @@ import { Edit, Trash } from 'lucide-react';
 
 import { PageHeader } from '../components/ui/PageHeader';
 import { DataTable } from '../components/ui/DataTable';
-import { AnimalFormModal } from '../components/AnimalFormModal';
+import { AnimalFormModal } from '../components/animais/AnimalFormModal';
 
 export function Animais() {
   const { user } = useAuth();

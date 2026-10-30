@@ -3,7 +3,7 @@ import { api } from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import { PageHeader } from '../components/ui/PageHeader';
 import { DataTable } from '../components/ui/DataTable';
-import { ProntuarioFormModal } from '../components/ProntuarioFormModal';
+import { ProntuarioFormModal } from '../components/prontuarios/ProntuarioFormModal';
 
 export function Prontuarios() {
   const { user } = useAuth();

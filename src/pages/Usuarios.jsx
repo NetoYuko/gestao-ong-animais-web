@@ -4,8 +4,8 @@ import { Edit, Trash, KeyRound } from 'lucide-react';
 
 import { PageHeader } from '../components/ui/PageHeader';
 import { DataTable } from '../components/ui/DataTable';
-import { UsuarioFormModal } from '../components/UsuarioFormModal';
-import { UsuarioSenhaModal } from '../components/UsuarioSenhaModal';
+import { UsuarioFormModal } from '../components/usuarios/UsuarioFormModal';
+import { UsuarioSenhaModal } from '../components/usuarios/UsuarioSenhaModal';
 
 export function Usuarios() {
   const [usuarios, setUsuarios] = useState([]);

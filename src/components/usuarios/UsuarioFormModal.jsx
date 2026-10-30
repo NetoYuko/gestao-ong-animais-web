@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { api } from '../services/api';
+import { api } from '../../services/api';
 import { Loader2, Eye, EyeOff } from 'lucide-react';
-import { BaseModal } from './ui/BaseModal';
+import { BaseModal } from '../ui/BaseModal';
 
 const baseSchema = z.object({
   nome: z.string().min(1, 'O nome é obrigatório'),
