@@ -33,7 +33,7 @@ export function Layout() {
         <div className="p-6 flex items-center justify-between border-b border-slate-700">
           <div className="flex items-center gap-3">
             <PawPrint className="w-8 h-8 text-orange-400" />
-            <h2 className="text-lg font-bold leading-tight">Pedacinho<br/>do Céu</h2>
+            <h2 className="text-lg font-bold leading-tight">Sistema Gestão <br/>Animais</h2>
           </div>
           <button className="lg:hidden text-slate-400 hover:text-white" onClick={() => setIsSidebarOpen(false)}>
             <X className="w-6 h-6" />
