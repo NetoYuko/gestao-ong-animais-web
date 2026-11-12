@@ -6,6 +6,7 @@ import { Edit, Trash } from 'lucide-react';
 import { PageHeader } from '../components/ui/PageHeader';
 import { DataTable } from '../components/ui/DataTable';
 import { AnimalFormModal } from '../components/animais/AnimalFormModal';
+import toast from 'react-hot-toast';
 
 export function Animais() {
   const { user } = useAuth();
@@ -38,9 +39,10 @@ export function Animais() {
     if (window.confirm('Tem certeza que deseja excluir permanentemente este animal?')) {
       try {
         await api.delete(`/animais/${id}`);
+        toast.success('Animal excluído com sucesso!');
         fetchAnimais();
       } catch (error) {
-        alert('Erro ao excluir. O animal pode estar vinculado a um processo.');
+        toast.error('Erro ao excluir. O animal pode estar vinculado a um processo.');
       }
     }
   };

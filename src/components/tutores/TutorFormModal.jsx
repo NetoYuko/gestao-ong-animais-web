@@ -5,6 +5,7 @@ import * as z from 'zod';
 import { api } from '../../services/api';
 import { Loader2 } from 'lucide-react';
 import { BaseModal } from '../ui/BaseModal';
+import toast from 'react-hot-toast';
 
 const tutorSchema = z.object({
   nome: z.string().min(1, 'O nome é obrigatório'),
@@ -35,18 +36,20 @@ export function TutorFormModal({ isOpen, onClose, onSuccess, tutorEditando }) {
     try {
       if (tutorEditando) {
         await api.put(`/tutores/${tutorEditando.id}`, data);
+        toast.success('Tutor atualizado com sucesso!');
       } else {
         await api.post('/tutores', data);
+        toast.success('Tutor cadastrado com sucesso!');
       }
       
       onSuccess();
       onClose();
     } catch (error) {
       console.error('Erro ao salvar tutor:', error);
-      if (error.response?.status === 400) {
-        alert('Erro: Verifique os dados. Este CPF já pode estar cadastrado.');
+      if (error.response?.status === 500) {
+        toast.error('Erro: Verifique os dados. Este CPF já pode estar cadastrado.');
       } else {
-        alert('Erro ao salvar os dados. Verifique sua conexão.');
+        toast.error('Erro ao salvar os dados. Verifique sua conexão.');
       }
     }
   };

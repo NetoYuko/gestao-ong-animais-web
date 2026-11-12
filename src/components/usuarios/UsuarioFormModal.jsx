@@ -5,6 +5,7 @@ import * as z from 'zod';
 import { api } from '../../services/api';
 import { Loader2, Eye, EyeOff } from 'lucide-react';
 import { BaseModal } from '../ui/BaseModal';
+import toast from 'react-hot-toast';
 
 const baseSchema = z.object({
   nome: z.string().min(1, 'O nome é obrigatório'),
@@ -53,8 +54,10 @@ export function UsuarioFormModal({ isOpen, onClose, onSuccess, usuarioEditando }
           perfil: data.perfil
         };
         await api.put(`/usuarios/${usuarioEditando.id}`, payloadPut);
+        toast.success('Dados do usuário atualizados com sucesso!');
       } else {
         await api.post('/usuarios', data);
+        toast.success('Novo usuário cadastrado com sucesso!');
       }
       
       onSuccess();
@@ -62,9 +65,9 @@ export function UsuarioFormModal({ isOpen, onClose, onSuccess, usuarioEditando }
     } catch (error) {
       console.error('Erro ao salvar usuário:', error);
       if (error.response?.status === 400 || error.response?.status === 409) {
-        alert('Erro: O e-mail informado já está em uso.');
+        toast.error('Erro: O e-mail informado já está em uso.');
       } else {
-        alert('Erro ao salvar os dados do usuário.');
+        toast.error('Erro ao salvar os dados do usuário.');
       }
     }
   };
