@@ -5,6 +5,7 @@ import * as z from 'zod';
 import { api } from '../../services/api';
 import { Loader2 } from 'lucide-react';
 import { BaseModal } from '../ui/BaseModal';
+import toast from 'react-hot-toast';
 
 const adocaoSchema = z.object({
   animalId: z.string().min(1, 'Selecione um animal'),
@@ -39,15 +40,17 @@ export function AdocaoFormModal({ isOpen, onClose, onSuccess, adocaoEditando, an
     try {
       if (adocaoEditando) {
         await api.put(`/adocoes/${adocaoEditando.id}`, data);
+        toast.success('Processo de adoção atualizado com sucesso!');
       } else {
         await api.post('/adocoes', data);
+        toast.success('Processo de adoção registrado com sucesso!');
       }
       
       onSuccess();
       onClose();
     } catch (error) {
       console.error('Erro ao registrar adoção:', error);
-      alert('Erro ao salvar os dados. Verifique sua conexão.');
+      toast.error('Erro ao cadastrar o processo de adoção. Verifique sua conexão.');
     }
   };
 
