@@ -90,7 +90,7 @@ export function AnimalFormModal({ isOpen, onClose, onSuccess, animalEditando }) 
         nome: data.nome,
         especie: data.especie,
         idadeMeses: data.idadeMeses,
-        status: animalEditando ? animalEditando.status : 'DISPONIVEL',
+        status: animalEditando ? animalEditando.status.replace('_', ' ') : 'DISPONIVEL',
         fotoUrl: finalFotoUrl,
       };
 
