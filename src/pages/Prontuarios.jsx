@@ -4,6 +4,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { PageHeader } from '../components/ui/PageHeader';
 import { DataTable } from '../components/ui/DataTable';
 import { ProntuarioFormModal } from '../components/prontuarios/ProntuarioFormModal';
+import toast from 'react-hot-toast';
 
 export function Prontuarios() {
   const { user } = useAuth();
@@ -24,6 +25,7 @@ export function Prontuarios() {
         setAnimais(response.data);
       } catch (error) {
         console.error('Erro ao buscar animais:', error);
+        toast.error('Erro ao carregar a lista de animais.');
       }
     }
     fetchAnimais();
@@ -41,6 +43,7 @@ export function Prontuarios() {
         setProntuarios(response.data);
       } catch (error) {
         console.error('Erro ao buscar prontuários:', error);
+        toast.error('Erro ao carregar o histórico clínico deste animal.');
       } finally {
         setIsLoading(false);
       }

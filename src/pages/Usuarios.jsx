@@ -6,6 +6,7 @@ import { PageHeader } from '../components/ui/PageHeader';
 import { DataTable } from '../components/ui/DataTable';
 import { UsuarioFormModal } from '../components/usuarios/UsuarioFormModal';
 import { UsuarioSenhaModal } from '../components/usuarios/UsuarioSenhaModal';
+import toast from 'react-hot-toast';
 
 export function Usuarios() {
   const [usuarios, setUsuarios] = useState([]);
@@ -38,9 +39,10 @@ export function Usuarios() {
     if (window.confirm(`Tem certeza que deseja excluir o acesso de ${email}?`)) {
       try {
         await api.delete(`/usuarios/${id}`);
+        toast.success('Usuário excluído com sucesso!');
         fetchUsuarios();
       } catch (error) {
-        alert('Erro ao excluir usuário. Verifique sua conexão.');
+        toast.error('Erro ao excluir usuário. Verifique sua conexão.');
       }
     }
   };

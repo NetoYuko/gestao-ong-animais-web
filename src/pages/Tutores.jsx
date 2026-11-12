@@ -6,6 +6,7 @@ import { Edit, Trash } from 'lucide-react';
 import { PageHeader } from '../components/ui/PageHeader';
 import { DataTable } from '../components/ui/DataTable';
 import { TutorFormModal } from '../components/tutores/TutorFormModal';
+import toast from 'react-hot-toast';
 
 export function Tutores() {
   const { user } = useAuth();
@@ -38,9 +39,10 @@ export function Tutores() {
     if (window.confirm('Tem certeza que deseja excluir este tutor? Isso só será possível se não houver adoções vinculadas a ele.')) {
       try {
         await api.delete(`/tutores/${id}`);
+        toast.success('Tutor excluído com sucesso!');
         fetchTutores();
       } catch (error) {
-        alert('Erro ao excluir. Este tutor provavelmente possui processos de adoção vinculados.');
+        toast.error('Erro ao excluir. O tutor pode estar vinculado a uma adoção.');
       }
     }
   };
