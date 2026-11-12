@@ -5,6 +5,7 @@ import * as z from 'zod';
 import { api } from '../../services/api';
 import { BaseModal } from '../ui/BaseModal';
 import { Loader2 } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 const prontuarioSchema = z.object({
   animalId: z.string().min(1, 'Selecione o animal'),
@@ -36,11 +37,12 @@ export function ProntuarioFormModal({ isOpen, onClose, onSuccess, animais }) {
       };
 
       await api.post('/prontuarios', payload);
+      toast.success('Registro clínico salvo no prontuário!');
       reset();
       onSuccess(data.animalId);
     } catch (error) {
       console.error("Erro ao registrar prontuário:", error);
-      alert("Ocorreu um erro ao salvar o registro médico.");
+      toast.error("Erro ao salvar o registro clínico.");
     }
   };
 
