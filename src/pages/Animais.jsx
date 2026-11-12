@@ -90,7 +90,7 @@ export function Animais() {
       <td className="p-4 text-slate-600">{animal.idadeMeses ? `${animal.idadeMeses} meses` : 'N/I'}</td>
       <td className="p-4">
         <span className={`px-3 py-1 rounded-full text-xs font-semibold ${statusColors[animal.status] || 'bg-slate-100 text-slate-700'}`}>
-          {animal.status}
+          {animal.status.replace('_', ' ')}
         </span>
       </td>
       {isAdmin && (
