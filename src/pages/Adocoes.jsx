@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { api } from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import { Edit } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 import { PageHeader } from '../components/ui/PageHeader';
 import { DataTable } from '../components/ui/DataTable';
@@ -35,6 +36,7 @@ export function Adocoes() {
       setTutores(resTutores.data);
     } catch (error) {
       console.error('Erro ao buscar dados:', error);
+      toast.error('Erro ao carregar os processos de adoção.');
     } finally {
       setIsLoading(false);
     }
