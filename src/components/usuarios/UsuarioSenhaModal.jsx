@@ -5,6 +5,7 @@ import * as z from 'zod';
 import { api } from '../../services/api';
 import { Loader2, Eye, EyeOff } from 'lucide-react';
 import { BaseModal } from '../ui/BaseModal';
+import toast from 'react-hot-toast';
 
 const senhaSchema = z.object({
   senhaAtual: z.string().min(1, 'A senha atual é obrigatória'),
@@ -35,16 +36,15 @@ export function UsuarioSenhaModal({ isOpen, onClose, onSuccess, usuarioId }) {
   const onSubmit = async (data) => {
     try {
       await api.patch(`/usuarios/${usuarioId}/senha`, data);
-      
-      alert('Senha alterada com sucesso!');
+      toast.success('Senha alterada com sucesso!');
       onSuccess();
       onClose();
     } catch (error) {
       console.error('Erro ao alterar senha:', error);
-      if (error.response?.status === 400) {
-        alert('A senha atual informada está incorreta.');
+      if (error.response?.status === 500) {
+        toast.error('Erro: A senha atual informada está incorreta.');
       } else {
-        alert('Erro ao alterar a senha. Verifique sua conexão.');
+        toast.error('Erro ao atualizar a senha. Tente novamente.');
       }
     }
   };
