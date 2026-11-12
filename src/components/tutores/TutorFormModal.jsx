@@ -46,7 +46,7 @@ export function TutorFormModal({ isOpen, onClose, onSuccess, tutorEditando }) {
       onClose();
     } catch (error) {
       console.error('Erro ao salvar tutor:', error);
-      if (error.response?.status === 400 || error.response?.status === 409) {
+      if (error.response?.status === 500) {
         toast.error('Erro: Verifique os dados. Este CPF já pode estar cadastrado.');
       } else {
         toast.error('Erro ao salvar os dados. Verifique sua conexão.');
