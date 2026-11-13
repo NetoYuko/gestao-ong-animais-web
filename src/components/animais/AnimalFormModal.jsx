@@ -7,6 +7,7 @@ import { supabase } from '../../services/supabase';
 import { UploadCloud, Loader2, Info, CheckCircle2 } from 'lucide-react';
 import { BaseModal } from '../ui/BaseModal';
 import toast from 'react-hot-toast';
+import { converterParaWebP } from '../../utils/imageOptimizer';
 
 const animalSchema = z.object({
   nome: z.string().min(1, 'O nome é obrigatório'),
@@ -63,13 +64,15 @@ export function AnimalFormModal({ isOpen, onClose, onSuccess, animalEditando }) 
 
       if (data.fotoUrl && data.fotoUrl.length > 0) {
         setIsUploading(true);
-        const file = data.fotoUrl[0];
-        const fileExt = file.name.split('.').pop();
-        const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+        const arquivoOriginal = data.fotoUrl[0];
+        const arquivoOtimizado = await converterParaWebP(arquivoOriginal);
+        const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.webp`;
 
         const { error: uploadError } = await supabase.storage
           .from('fotos-animais')
-          .upload(fileName, file);
+          .upload(fileName, arquivoOtimizado, {
+            contentType: 'image/webp',
+          });
 
         if (uploadError) {
           console.error('Erro no Supabase:', uploadError);
