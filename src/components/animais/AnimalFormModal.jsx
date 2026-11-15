@@ -171,7 +171,6 @@ export function AnimalFormModal({ isOpen, onClose, onSuccess, animalEditando }) 
                 {...register('fotoUrl')}
               />
             </div>
-            <p className="text-xs text-slate-500 mt-2 text-center">Permitido: JPG, PNG</p>
           </div>
 
           <div className="w-full md:w-2/3 space-y-4">
