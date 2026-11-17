@@ -3,6 +3,16 @@
 Interface web (SPA) desenvolvida em React para o **Sistema de Gestão ONG de animais**, uma aplicação de gestão criada para descentralizar informações, automatizar processos e substituir controles manuais de uma ONG de proteção animal.
 
 * **Aplicação em Produção:** [Acessar Deploy](https://gestao-ong-animais-web.vercel.app/)
+- ADMIN:
+
+Usuario: admin01@ong.com
+Senha: Admin1234
+
+- USER:
+
+Usuario: voluntario01@ong.com
+Senha: Voluntario1234
+
 * **Repositório Backend (API):** [gestao-ong-animais-api](https://github.com/NetoYuko/gestao-ong-animais-api)
 
 
